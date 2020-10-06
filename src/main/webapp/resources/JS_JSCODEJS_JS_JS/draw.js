@@ -6,7 +6,7 @@ canvas = document.getElementById("canvas");
 ctx = canvas.getContext("2d");
 
 let value_r = 4;
-/*
+
 function windowToCanvas(canvas, x, y) {
     let bbox = canvas.getBoundingClientRect();
     return { x: x - bbox.left * (canvas.width / bbox.width),
@@ -20,25 +20,19 @@ canvas.onmousedown = function (e) {
     let rly_y = (-1) * value_r*((loc.y - 250)/200)
 
     if(rly_x > value_r || rly_y > value_r || rly_x < -1 * value_r || rly_y < -1 *value_r){
-        document.getElementById('ErrorCanvas').innerText = "Не тыкай по краям, ЗАПРЕТ";
+        alert("Критин")
     }else {
+        let out = document.getElementById("j_idt6:x");
+        out.value = rly_x
 
-        const selectX = $("#selectX")
-        selectX.append(`<option value="${rly_x.toString()}">${rly_x.toString()}</option>`)
-        selectX[0].value = rly_x.toString()
+        out = document.getElementById("j_idt6:y");
+        out.value = rly_y;
 
-        const selectR = $("#selectR")
-        selectR.append(`<option value="${value_r.toString()}">${value_r.toString()}</option>`)
-        selectR[0].value = value_r.toString()
-
-        $("#y_param")[0].value = rly_y.toString()
-
-        flag_cvs = true;
-
-        $("#submit")[0].click()
+        out = document.getElementById("j_idt6:out_button")
+        out.click()
     }
 };
-*/
+
 
 function set_r_value(flag_draw){
     if(flag_draw == 1){
@@ -155,17 +149,16 @@ function chekTableAndDraw(){
     let cells = Array.prototype.slice.call(document.getElementById("table_out_data").getElementsByTagName("td"));
     let n = cells.length
     if(Number(cells[2].innerHTML) !== 0){
-        for(let i = 0; i < n; i++){
-            if(i === 0){
-                drawPoint(Number(cells[i].innerHTML),
-                    Number(cells[i+1].innerHTML),
+        for(let i = n; i >= 0; i--){
+            i=i-3
+            if(i === 1){
+                drawPoint(Number(cells[i-1].innerHTML),
+                    Number(cells[i].innerHTML),
                     value_r,"last");
-                i+=3
             }else {
-                drawPoint(Number(cells[i].innerHTML),
-                    Number(cells[i+1].innerHTML),
+                drawPoint(Number(cells[i-1].innerHTML),
+                    Number(cells[i].innerHTML),
                     value_r," ");
-                i+=3
             }
         }
     }
@@ -185,6 +178,12 @@ function checkboxOut(){
     document.getElementById('j_idt6:item2').checked = false;
     document.getElementById('j_idt6:item3').checked = false;
     document.getElementById('j_idt6:item4').checked = false;
+}
+
+function setX(){
+    let input = document.getElementById("j_idt6:input1_input");
+    let out = document.getElementById("j_idt6:x");
+    out.value = input.value
 }
 
 $(window).on('resize', eventHandler)

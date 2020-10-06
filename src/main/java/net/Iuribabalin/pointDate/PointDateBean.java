@@ -21,25 +21,27 @@ public class PointDateBean implements Serializable {
 
     private Point newPoint;
 
-
-    public List<Point> getPointsTable(){
-        return bdClass.getPoints();
-    }
 /*
     public List<Point> getPointsTable(){
-        return bdClass.getPoints(this.session_id.toString());
+        return bdClass.getPoints();
     }*/
+
+    public List<Point> getPointsTable(){
+        return bdClass.getPoints(this.session_id.toString());
+    }
 
     public PointDateBean() {
         this.newPoint = new Point();
     }
 
     public void setLastR(){
-        newPoint.setR(getPointsTable().get(0).getR());
+        if(getPointsTable().size() != 0)
+            newPoint.setR(getPointsTable().get(0).getR());
     }
 
     public void doCode(){
         newPoint.setSession_id(session_id.toString());
+        newPoint.check();
         bdClass.addPointToTable(newPoint);
         newPoint = new Point();
         setLastR();

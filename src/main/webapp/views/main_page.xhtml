@@ -34,11 +34,18 @@
             <h:panelGrid>
                 <p:row>
                     <p:column>
-                        X:
+                        X(-3 ... 3):
                     </p:column>
                     <p:column>
-                        <p:inputNumber id="input1" value="#{pointDateBean.newPoint.x}" minValue="-3" maxValue="3" decimalPlaces="2">
-                        </p:inputNumber>
+                        <p:inputNumber id="input1" onchange="setX()"
+                                       value="#{pointDateBean.newPoint.x}"
+                                       decimalSeparator="."
+                                       minValue="-3" maxValue="3"
+                                       decimalPlaces="2"
+                                       autocomplete="off"
+                                       thousandSeparator="false"
+                                       required="true"/>
+                        <h:inputHidden id="x" value="#{pointDateBean.newPoint.x}" />
                     </p:column>
                 </p:row>
 
@@ -141,7 +148,7 @@
 
                 <p:row>
                     <p:column>
-                        R:
+                        R(1 ... 4):
                     </p:column>
                     <p:column>
                         <p:inputNumber id="input3" value="#{pointDateBean.newPoint.r}" onchange="draw(1)" minValue="1" maxValue="4" decimalPlaces="0">
@@ -149,36 +156,37 @@
                     </p:column>
                 </p:row>
             </h:panelGrid>
-            <p:commandButton value="ВВОД"
+            <p:commandButton id="out_button"
+                             value="ВВОД"
                              ajax="false"
                              action="#{pointDateBean.doCode}"/>
         </p:panel>
     </h:form>
     <h:panelGroup id="entriesTable">
-        <h:dataTable id="table_out_data" value="#{pointDateBean.pointsTable}" var="entry"
-                     style="width: 70vw; border-width:2px; margin: 0 auto; border-color:darkblue; border-style:solid;">
+        <h:dataTable id="table_out_data" value="#{pointDateBean.pointsTable}" var="point"
+                     style="width: 100%; border-width:2px; margin: 0 auto; border-color:black; border-style:solid;">
             <h:column>
                 <f:facet name="header">X</f:facet>
-                #{entry.x}
+                #{point.x}
             </h:column>
 
             <h:column>
                 <f:facet name="header">Y</f:facet>
-                #{entry.y}
+                #{point.y}
             </h:column>
 
             <h:column>
                 <f:facet name="header">R</f:facet>
-                #{entry.r}
+                #{point.r}
             </h:column>
 
             <h:column>
                 <f:facet name="header">Result</f:facet>
-                #{entry.res}
+                #{point.res}
             </h:column>
         </h:dataTable>
     </h:panelGroup>
-    <h:outputScript library="sjCodesjCodesjCodej" name="draw.js"/>
+    <h:outputScript library="JS_JSCODEJS_JS_JS" name="draw.js"/>
    <!-- <h:outputScript library="js" name="draw.js"/>-->
 </h:body>
 </html>

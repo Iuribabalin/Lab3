@@ -1,8 +1,8 @@
 package net.Iuribabalin.Model;
 
 public class Point {
-    private double x;
-    private double y;
+    private float x;
+    private float y;
     private int r = 4;
     private String session_id;
     private String res;
@@ -18,7 +18,7 @@ public class Point {
         this.res = res;
     }
 
-    public void setX(double x) {
+    public void setX(float x) {
         this.x = x;
     }
 
@@ -30,7 +30,7 @@ public class Point {
         return session_id;
     }
 
-    public void setY(double y) {
+    public void setY(float y) {
         this.y = y;
     }
 
@@ -38,11 +38,11 @@ public class Point {
         return r;
     }
 
-    public double getX() {
+    public float getX() {
         return x;
     }
 
-    public double getY() {
+    public float getY() {
         return y;
     }
 
@@ -51,6 +51,12 @@ public class Point {
     }
 
     public void check(){
-
+        if((x*x + y*y <= r*r && x >= 0 && y <= 0) ||
+                (y-x/2 <= r/2 && x<=0 && y>=0) ||
+                (x>=0 && y>=0 && y<=r/2 && x<=r)){
+            res =  "Входит";
+        }else{
+            res = "Не входит";
+        }
     }
 }
