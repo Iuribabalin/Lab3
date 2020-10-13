@@ -3,14 +3,15 @@ package net.Iuribabalin.Model;
 public class Point {
     private float x;
     private float y;
-    private int r = 4;
+    private float r = 4;
     private String session_id;
     private String res;
 
     public Point(){
     }
+    
 
-    public void setR(int r) {
+    public void setR(float r) {
         this.r = r;
     }
 
@@ -34,7 +35,7 @@ public class Point {
         this.y = y;
     }
 
-    public int getR() {
+    public float getR() {
         return r;
     }
 
@@ -54,9 +55,9 @@ public class Point {
         if((x*x + y*y <= r*r && x >= 0 && y <= 0) ||
                 (y-x/2 <= r/2 && x<=0 && y>=0) ||
                 (x>=0 && y>=0 && y<=r/2 && x<=r)){
-            res =  "Входит";
+            res =  "true";
         }else{
-            res = "Не входит";
+            res = "false";
         }
     }
 }

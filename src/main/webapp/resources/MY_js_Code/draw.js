@@ -50,12 +50,12 @@ function set_r_value(flag_draw){
     }
 }
 
-function drawPoint(x,y,r, last_point) {
+function drawPoint(x,y,r, res) {
     let flagger = x > r || y > r || x < -1 * r || y < -1 *r;
     if(!flagger){
         ctx.beginPath();
 
-        if(last_point === "last") {
+        if(res === "true") {
             ctx.fillStyle = "rgba(0, 255, 0, 1)";
         }else{
             ctx.fillStyle = "rgba(255, 0, 0, 1)";
@@ -149,17 +149,10 @@ function chekTableAndDraw(){
     let cells = Array.prototype.slice.call(document.getElementById("table_out_data").getElementsByTagName("td"));
     let n = cells.length
     if(Number(cells[2].innerHTML) !== 0){
-        for(let i = n; i >= 0; i--){
-            i=i-3
-            if(i === 1){
-                drawPoint(Number(cells[i-1].innerHTML),
-                    Number(cells[i].innerHTML),
-                    value_r,"last");
-            }else {
-                drawPoint(Number(cells[i-1].innerHTML),
-                    Number(cells[i].innerHTML),
-                    value_r," ");
-            }
+        for(let i = 0; i < n; i=i+4){
+            drawPoint(Number(cells[i].innerHTML),
+                Number(cells[i+1].innerHTML),
+                value_r,cells[i+3].innerText);
         }
     }
 }

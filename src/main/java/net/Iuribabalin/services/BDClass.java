@@ -17,18 +17,6 @@ import java.util.List;
 @ManagedBean
 @SessionScoped
 public class BDClass {
-    /*
-    private static final List<Point> points = new ArrayList<>();
-    public List<Point> getPoints() {
-        return points;
-    }
-
-    public void addPointToTable(Point newPoint) {
-        points.add(0,newPoint);
-    }
-
-*/
-
 
     private DataSource dataSource;
 
@@ -47,7 +35,7 @@ public class BDClass {
             connection = dataSource.getConnection();
             connection.createStatement().execute(
                     "create table if not exists results (" +
-                            "x float , y float, r int, res text, session_id text)"
+                            "x float , y float, r float, res text, session_id text)"
             );
         } catch (SQLException e) {
             throw new IllegalStateException("Couldn't create connection", e);
@@ -64,7 +52,7 @@ public class BDClass {
             );
             preparedStatement.setDouble(1,point.getX());
             preparedStatement.setDouble(2,point.getY());
-            preparedStatement.setInt(3,point.getR());
+            preparedStatement.setFloat(3,point.getR());
             preparedStatement.setString(4,point.getRes());
             preparedStatement.setString(5,point.getSession_id());
             preparedStatement.execute();

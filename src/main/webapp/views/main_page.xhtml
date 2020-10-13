@@ -162,6 +162,9 @@
                              action="#{pointDateBean.doCode}"/>
         </p:panel>
     </h:form>
+    <h:form style="border-width:2px; margin: 0 auto; padding: 1%; border-color:#949494; border-style:solid; width: 35%">
+        <p:button outcome="to_index" value="Go to clock" icon="pi"/>
+    </h:form>
     <h:panelGroup id="entriesTable">
         <h:dataTable id="table_out_data" value="#{pointDateBean.pointsTable}" var="point"
                      style="width: 100%; border-width:2px; margin: 0 auto; border-color:black; border-style:solid;">
@@ -186,7 +189,7 @@
             </h:column>
         </h:dataTable>
     </h:panelGroup>
-    <h:outputScript library="JS_JSCODEJS_JS_JS" name="draw.js"/>
+    <h:outputScript library="MY_js_Code" name="draw.js"/>
    <!-- <h:outputScript library="js" name="draw.js"/>-->
 </h:body>
 </html>
