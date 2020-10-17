@@ -151,7 +151,17 @@
                         R(1 ... 4):
                     </p:column>
                     <p:column>
-                        <p:inputNumber id="input3" value="#{pointDateBean.newPoint.r}" onchange="draw(1)" minValue="1" maxValue="4" decimalPlaces="0">
+                        <p:inputNumber id="input3" value="#{pointDateBean.newPoint.r}"
+                                       onchange="
+                                       if(document.getElementById('j_idt6:input3_input').value == 0)
+                                            document.getElementById('j_idt6:input3_input').value = 1;
+                                       draw(1)"
+                                       minValue="0"
+                                       maxValue="4"
+                                       decimalPlaces="0"
+                                       autocomplete="off"
+                                       thousandSeparator="false"
+                                       required="true">
                         </p:inputNumber>
                     </p:column>
                 </p:row>
@@ -189,7 +199,7 @@
             </h:column>
         </h:dataTable>
     </h:panelGroup>
-    <h:outputScript library="MY_js_Code" name="draw.js"/>
+    <h:outputScript library="MY_js_CODE" name="draw.js"/>
    <!-- <h:outputScript library="js" name="draw.js"/>-->
 </h:body>
 </html>

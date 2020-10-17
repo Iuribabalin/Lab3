@@ -20,7 +20,7 @@ canvas.onmousedown = function (e) {
     let rly_y = (-1) * value_r*((loc.y - 250)/200)
 
     if(rly_x > value_r || rly_y > value_r || rly_x < -1 * value_r || rly_y < -1 *value_r){
-        alert("Критин")
+        alert("Нажимаем на график")
     }else {
         let out = document.getElementById("j_idt6:x");
         out.value = rly_x

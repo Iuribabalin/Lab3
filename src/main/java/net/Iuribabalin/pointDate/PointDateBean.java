@@ -41,6 +41,8 @@ public class PointDateBean implements Serializable {
 
     public void doCode(){
         newPoint.setSession_id(session_id.toString());
+        if(newPoint.getR() == 0)
+            newPoint.setR(1);
         newPoint.check();
         bdClass.addPointToTable(newPoint);
         newPoint = new Point();
