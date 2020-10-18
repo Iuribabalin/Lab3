@@ -5,9 +5,7 @@ import net.Iuribabalin.services.BDClass;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.naming.NamingException;
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,10 +19,6 @@ public class PointDateBean implements Serializable {
 
     private Point newPoint;
 
-/*
-    public List<Point> getPointsTable(){
-        return bdClass.getPoints();
-    }*/
 
     public List<Point> getPointsTable(){
         return bdClass.getPoints(this.session_id.toString());
